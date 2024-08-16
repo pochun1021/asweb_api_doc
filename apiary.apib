@@ -1,0 +1,1327 @@
+FORMAT: 1A
+HOST:aswebapi.test5.sinica.edu.tw/api
+# asweb
+
+院網API
+
+## 取得網站基本資訊 [/getWebinfo]
+### get base WebInfo [GET]
+透過此動作可取得院網相關基本資訊。  
+例如，網站地址、電話、意見信箱、社群網站LINK、無障礙標章等。  
+
++ Response 200 (application/json)
+    + Attributes
+        + address: `11529 台北市南港區研究院路二段128號` (string, required) - 地址
+        + addressEn: `128 Academia Road, Section 2, Nankang, Taipei 11529` (string, required) - 地址(英)
+        + phone: `+886-2-27822120~9(共10線)` (string, required) - 電話
+        + phoneEn: `Tel: +886-2-27822120~9 (10 lines)` (string, required) - 電話(英)
+        + email: `aspublic@gate.sinica.edu.tw` (string, required) - 意見信箱
+        + emailEn: `aspublic@gate.sinica.edu.tw` (string, required) - 意見信箱(英)
+        + FBLink: `https://www.facebook.com/sinicaedu` (string, required) - FB連結
+        + IGLink: `https://www.instagram.com/academiasinica_official` (string, required) - IG連結
+        + YTLink: `https://www.youtube.com/channel/UCPk594oZYMU4Eak7By5wHyQ` (string, required) - YT連結
+        + TWLink: `https://twitter.com/AcadSinica` (string, required) - twitter連結
+        + accessibility: `https://accessibility.ncc.gov.tw/Applications/Detail?category=20200826154034` (string, required) - 無障礙標章
+
+## 取得選單 [/getMenus/{mID}]
+
+### get Menus [GET]
+透過此動作可取得院網選單，這個動作需要傳入一個父節點選單的ID。  
+此動作會回傳父選單ID下的所有子選單。  
+#### 以下為各選單父節點ID
++ 前端主選單：-1
++ 前端上方選單：-2
++ 相關網頁：-3
++ 頁尾目錄：-4
++ 服務與資訊：-5
+
++ Parameters
+    + mID: `-1` (number, required) - 父選單ID
+    
++ Response 200 (application/json)
+    + Attributes
+        + menus (array[HomeMenu])
+        + menusEn (array[HomeMenu])
+
+## 取得選單輪播圖 [/getMenuCarousel/{mID}]
+### get MenuCarousel [GET]
+透過此動作可取得院網選單，這個動作需要傳入一個父節點選單的ID。  
+此動作會回傳父選單ID下的輪播圖。
+
++ Parameters
+    + mID: `2` (number, required) - 選單ID
+    
++ Response 200 (application/json)
+    + Attributes
+        + menuCarouselCh (array[MenuCarousel])
+        + menuCarouselEn (array[MenuCarousel])
+
+## 取得輪播圖 [/getCarousel]
+### get Carousel [GET]
+透過此動作可取得輪播圖資料。
+
++ Response 200 (application/json)
+    + Attributes
+        + Carousel (array[CarouselData])
+        + CarouselEn (array[CarouselData])
+
+
+## 取得新聞輪播 [/getNewsCarousel]
+### get NewsCarousel [GET]
+透過此動作可取得新聞輪播相關資訊
+    
++ Response 200 (application/json)
+    + Attributes
+        + type: 1 (number, required) - 首頁新聞首頁種類(1/2)
+        + newsData (array[NewsCarousel])
+        + newsEnData (array[NewsCarousel])
+        + moreLink: https://www.sinica.edu.tw/ch (string, required) - 更多連結
+        + moreLinkEn: https://www.sinica.edu.tw/en (string, required) - 更多連結(英)
+        + mID: 55 (number, required) - 選單ID
+
+
+## 取得首頁學術行政 [/getEvents]
+### get Events [GET]
+透過此動作可取得院網首頁學術行政資料
+    
++ Response 200 (application/json)
+    + Attributes
+        + Events (array[Event])
+        + EventsEn (array[Event])
+        + moreLink: https://www.sinica.edu.tw/ch (string, required) - 更多連結
+        + moreLinkEn: https://www.sinica.edu.tw/en (string, required) - 更多連結(英)
+        + mID: 56 (number, required) - 選單ID
+
+
+
+## 取得徵才訊息 [/getRecruitment]
+### get Recruitments [GET]
+透過此動作可取得院網首頁徵才資訊資料
+#### division 為學組組別
++ 院本部：1
++ 數理科學組：2
++ 生命科學組：3
++ 人文及社會科學組：4
+    
++ Response 200 (application/json)
+    + Attributes
+        + Recruitments (array[HomeRecruitment])
+        + RecruitmentsEn (array[HomeRecruitment])
+        + moreLink: https://www.sinica.edu.tw/ch (string, required) - 更多連結
+        + moreLinkEn: https://www.sinica.edu.tw/en (string, required) - 更多連結(英)
+        + mID: 53 (number, required) - 選單ID
+
+## 取得近期活動 [/getCalendars]
+### get Calendars [GET]
+透過此動作可取得院網首頁活動資料  
++ Response 200 (application/json)
+    + Attributes
+        + Calendars (array[HomeCalendar])
+        + CalendarsEn (array[HomeCalendar])
+        + moreLink: https://www.sinica.edu.tw/ch (string, required) - 更多連結
+        + moreLinkEn: https://www.sinica.edu.tw/en (string, required) - 更多連結(英)
+        + mID: 57 (number, required) - 選單ID
+
+
+## 取得研究成果 [/getResearchCarousel]
+### get ResearchCarousel [GET]
+透過此動作可取得研究成果輪播相關資訊  
++ Response 200 (application/json)
+    + Attributes
+        + researchData (array[research])
+        + researchEnData (array[research])
+        + moreLink: https://www.sinica.edu.tw/ch (string, required) - 更多連結
+        + moreLinkEn: https://www.sinica.edu.tw/en (string, required) - 更多連結(英)
+        + mID: 36 (number, required) - 選單ID
+
+## 取得專區 [/getZonesData]
+### get ZonesData [GET]
+透過此動作可取得院網首頁專區  
++ Response 200 (application/json)
+    + Attributes
+        + Datas (array[Zone])
+        + DatasEn (array[Zone])
+
+## 取得新聞類別 [/getNewCatData]
+### get NewCatData [GET]
++ Response 200 (application/json)
+    + Attributes
+        + Data (array[NewCat])
+        + DataEn (array[NewCat])
+
+## 取得活動類別 [/getEventCatData]
+### get EventCatData [GET]
++ Response 200 (application/json)
+    + Attributes
+        + Data (array[EventCat])
+        + DataEn (array[EventCat])
+
+## 取得單位 [/getInstData]
+### get InstData [GET]
+*/是不是只需提供有發布新聞之單位  
+#### division 為學組組別
++ 院本部：1
++ 數理科學組：2
++ 生命科學組：3
++ 人文及社會科學組：4
+
++ Response 200 (application/json)
+    + Attributes
+        + Data (array[InstData])
+        + DataEn (array[InstData])
+
+
+## 取得單位2層選單 [/getInstDataTwoLayers]
+### get InstDataTwoLayers [GET]
+#### division 為學組組別
++ 院本部：1
++ 數理科學組：2
++ 生命科學組：3
++ 人文及社會科學組：4
++ 跨學組研究中心: 5
+
++ Response 200 (application/json)
+    + Attributes
+        + Data (array[InstDataTwoLayers])
+        + DataEn (array[InstDataTwoLayers])
+
+
+## 新聞列表頁-table [/getNewlist/{mID}]
+### get Newlist [POST]
+#### mID為選單ID
++ Parameters
+    + mID: `55` (number, required) - 選單ID
+
++ Request (application/json)
+    + Attributes
+        + startDate: `2022-01-01` (string, optional)
+        + endDate: `2022-01-03` (string, optional)
+        + instCode: 21 (string, optional)
+        + catID: 4 (string, optional)
+        + keyword: 其他 (string, optional)
+        + startPage: 1 (number, optional)
+        + pageNum: 10 (number, optional)
+    
++ Response 200 (application/json)
+    + Attributes
+        + menus
+            + mID: `55` (number, required) - 選單Id
+            + mName: `新聞訊息` (string, optional) - 選單名稱
+            + mType: `news` (string, optional) - 版型類別
+            + description: `null` (string, optional) - 說明備註
+            + parentMenus (array[parentMenus])
+        + menusEn
+            + mID: `55` (number, required) - 選單Id
+            + mName: `Press Releases` (string, optional) - 選單名稱
+            + mType: `news` (string, optional) - 版型類別
+            + description: `null` (string, optional) - 說明備註
+            + parentMenus (array[parentMenus])
+        + news (array[newsData])
+        + newsNum: 20 (number, required)
+        + newsEn (array[newsData])
+        + newsEnNum: 20 (number, required)
+    
+
+## 新聞列表頁-cards [/getNewlistWithimg/{mID}]
+### get NewlistWithimg [POST]
+#### mID為選單ID
++ Parameters
+    + mID: `55` (number, required) - 選單ID
+
++ Request (application/json)
+    + Attributes
+        + startDate: `2022-01-01` (string, optional)
+        + endDate: `2022-01-03` (string, optional)
+        + instCode: 21 (string, optional)
+        + catID: 4 (string, optional)
+        + keyword: 其他 (string, optional)
+        + startPage: 1 (number, optional)
+        + pageNum: 10 (number, optional)
+    
++ Response 200 (application/json)
+    + Attributes
+        + menus
+            + mID: `55` (number, required) - 選單ID
+            + mName: `新聞訊息` (string, optional) - 選單名稱
+            + mType: `news` (string, optional) - 選單類別
+            + description: `null` (string, optional) - 說明備註
+            + parentMenus (array[parentMenus])
+        + menusEn
+            + mID: `55` (number, required) - 選單ID
+            + mName: `Press Releases` (string, optional) - 選單名稱
+            + mType: `news` (string, optional) - 選單類別
+            + description: `null` (string, optional) - 說明備註
+            + parentMenus (array[parentMenus])
+        + news (array[newsDataWithImg])
+        + newsEn (array[newsDataWithImg])
+        + newsNum: 20 (number, required)
+        + newsEnNum: 20 (number, required)
+
+## 取得單篇新聞資料 [/getNewsData/{ID}]
+### get NewsData [GET]
+#### ID為新聞ID
+
++ Parameters
+    + ID: `1` (number, required) - 新聞ID
+
++ Response 200 (application/json)
+    + Attributes
+        + menus
+            + mID: `55` (number, required) - 選單ID
+            + mName: `新聞訊息` (string, optional) - 選單名稱
+            + mType: `news` (string, optional) - 選單類別
+            + description: `null` (string, optional) - 說明備註
+            + parentMenus (array[parentMenus])
+        + menusEn
+            + mID: `55` (number, required) - 選單ID
+            + mName: `Press Releases` (string, optional) - 選單名稱
+            + mType: `news` (string, optional) - 選單類別
+            + description: `null` (string, optional) - 說明備註
+            + parentMenus (array[parentMenus])
+        + NewsDetailch (NewsDetails)
+        + NewsDetailen (NewsDetails)
+        
+
+
+## 網路相簿 [/getGalleries/{mID}]
+### get Galleries [POST]
+#### mID為選單ID
+
++ Parameters
+    + mID: `61` (number, required) - 選單ID
+    
++ Request (application/json)
+    + Attributes
+        + startDate: `2022-01-01` (string, optional)
+        + endDate: `2022-01-03` (string, optional)
+        + instCode: 21 (string, optional)
+        + catID: 4 (string, optional)
+        + keyword: 其他 (string, optional)
+        + startPage: 1 (number, optional)
+        + pageNum: 10 (number, optional)
+
++ Response 200 (application/json)
+    + Attributes
+        + menus
+            + mID: `61` (number, required) - 選單ID
+            + mName: `網路相簿` (string, optional) - 選單名稱
+            + mType: `album` (string, optional) - 選單類別
+            + description: `null` (string, optional) - 說明備註
+            + parentMenus (array[parentMenus])
+        + menusEn
+            + mID: `61` (number, required) - 選單ID
+            + mName: `Photos` (string, optional) - 選單名稱
+            + mType: `album` (string, optional) - 選單類別
+            + description: `null` (string, optional) - 說明備註
+            + parentMenus (array[parentMenus])
+        + galleryCh (array[gallery])
+        + galleryChNum: 20 (number, required)
+        + galleryEn (array[gallery])
+        + galleryEnNum: 20 (number, required)
+
+
+## 影音 [/getVideos/{mID}]
+### get Videos [POST]
+#### mID為選單ID
+
++ Parameters
+    + mID: `62` (number, required) - 選單ID
+    
++ Request (application/json)
+    + Attributes
+        + startDate: `2022-01-01` (string, optional)
+        + endDate: `2022-01-03` (string, optional)
+        + instCode: 21 (string, optional)
+        + catID: 4 (string, optional)
+        + keyword: 其他 (string, optional)
+        + startPage: 1 (number, optional)
+        + pageNum: 10 (number, optional)
+
++ Response 200 (application/json)
+    + Attributes
+        + menus
+            + mID: `62` (number, required) - 選單ID
+            + mName: `影音` (string, optional) - 選單名稱
+            + mType: `video` (string, optional) - 選單類別
+            + description: `null` (string, optional) - 說明備註
+            + parentMenus (array[parentMenus])
+        + menusEn
+            + mID: `62` (number, required) - 選單ID
+            + mName: `Videos` (string, optional) - 選單名稱
+            + mType: `video` (string, optional) - 選單類別
+            + description: `null` (string, optional) - 說明備註
+            + parentMenus (array[parentMenus])
+        + VideosCh (array[Video])
+        + VideoNumCh: 20 (number, required)
+        + VideosEn (array[Video])
+        + VideoNumEn: 20 (number, required)
+
+## 連續空白版型 [/getParagraph/{mID}]
+### get Paragraph [GET]
+#### mID為選單ID
+
++ Parameters
+    + mID: `71` (number, required) - 選單ID
+
++ Response 200 (application/json)
+    + Attributes
+        + menus
+            + mID: `71` (number, required) - 選單ID
+            + mName: `檔管專區` (string, optional) - 選單名稱
+            + mType: `paragraph` (string, optional) - 選單類別
+            + description: `null` (string, optional) - 說明備註
+            + parentMenus (array[parentMenus])
+        + menusEn
+            + mID: `71` (number, required) - 選單ID
+            + mName: `Archives` (string, optional) - 選單名稱
+            + mType: `paragraph` (string, optional) - 選單類別
+            + description: `null` (string, optional) - 說明備註
+            + parentMenus (array[parentMenus])
+        + ParagraphCh (array[Paragraph])
+        + ParagraphEn (array[Paragraph])
+
+## 頁籤版型 [/getTabs/{mID}]
+### get Tabs [GET]
+#### mID為選單ID
++ Parameters
+    + mID: `69` (number, required) - 選單ID
+
++ Response 200 (application/json)
+    + Attributes
+        + menus
+            + mID: `69` (number, required) - 選單ID
+            + mName: `防疫專區` (string, optional) - 選單名稱
+            + mType: `tab` (string, optional) - 選單類別
+            + description: `null` (string, optional) - 說明備註
+            + parentMenus (array[parentMenus])
+        + menusEn
+            + mID: `69` (number, required) - 選單ID
+            + mName: `Epidemic Prevention` (string, optional) - 選單名稱
+            + mType: `tab` (string, optional) - 選單類別
+            + description: `null` (string, optional) - 說明備註
+            + parentMenus (array[parentMenus])
+        + TabsCh (array[Tab])
+        + TabsEn (array[Tab])
+        
+
+## 區塊版型 [/getSections/{mID}]
+### get Sections [GET]
+#### mID為選單ID
++ Parameters
+    + mID: `11` (number, required) - 選單ID
+
++ Response 200 (application/json)
+    + Attributes
+        + menus
+            + mID: `11` (number, required) - 選單ID
+            + mName: `公共設施` (string, optional) - 選單名稱
+            + mType: `section` (string, optional) - 選單類別
+            + description: `null` (string, optional) - 說明備註
+            + parentMenus (array[parentMenus])
+        + menusEn
+            + mID: `11` (number, required) - 選單ID
+            + mName: `Public Facilities` (string, optional) - 選單名稱
+            + mType: `section` (string, optional) - 選單類別
+            + description: `null` (string, optional) - 說明備註
+            + parentMenus (array[parentMenus])
+        + SectionsCh (array[Section])
+        + SectionsEn (array[Section])
+
+
+## 多連結版型 [/getLinks/{mID}]
+### get Multilinks [POST]
+#### mID為選單ID
++ Parameters
+    + mID: `77` (number, required) - 選單ID
+
++ Request (application/json)
+    + Attributes
+        + keyword: 其他 (string, optional)
+
++ Response 200 (application/json)
+    + Attributes
+        + menus
+            + mID: `77` (number, required) - 選單ID
+            + mName: `相關連結` (string, optional) - 選單名稱
+            + mType: `link` (string, optional) - 選單類別
+            + description: `null` (string, optional) - 說明備註
+            + parentMenus (array[parentMenus])
+        + menusEn
+            + mID: `77` (number, required) - 選單ID
+            + mName: `related link` (string, optional) - 選單名稱
+            + mType: `link` (string, optional) - 選單類別
+            + description: `null` (string, optional) - 說明備註
+            + parentMenus (array[parentMenus])
+        + MultilinksCh (array[Multilink])
+        + MultilinksEn (array[Multilink])
+
+## 選單版型 [/getDirectory/{mID}]
+### get Directory [GET]
+#### mID為選單ID
++ Parameters
+    + mID: `3` (number, required) - 選單ID
+
++ Response 200 (application/json)
+    + Attributes
+        + menus
+            + mID: `3` (number, required) - 選單ID
+            + mName: `簡介` (string, optional) - 選單名稱
+            + mType: `directory` (string, optional) - 選單類別
+            + description: `<p>說明備註</p>` (string, optional) - 說明備註
+            + parentMenus (array[parentMenus])
+        + menusEn
+            + mID: `3` (number, required) - 選單ID
+            + mName: `about Academia Sinica` (string, optional) - 選單名稱
+            + mType: `directory` (string, optional) - 選單類別
+            + description: `<p>Notes</p>` (string, optional) - 說明備註
+            + parentMenus (array[parentMenus])
+        + DirectoryCh (array[Directory])
+        + DirectoryEn (array[Directory])
+
+## 人才招募列表 [/getRecruitmentlist/{mID}]
+### get listRecruitment [POST]
+#### orderType 為排序之組別
++ 刊登日期：1
++ 截止日期：2
++ 學經歷要求：3
+
+#### orderKey 
++ asc
++ desc
+
+#### division 為學組組別
++ 院本部：1
++ 數理科學組：2
++ 生命科學組：3
++ 人文及社會科學組：4
+
+#### mID為選單ID
+
+#### workType為工作類型 + 職位
+
+#### workArea為工作地點
+
+#### expRequire為學經歷要求
++ Parameters
+    + mID: `53` (number, required) - 選單ID
+    
++ Request (application/json)
+    + Attributes
+        + division: `1` (number, optional)
+        + instCode: 01,02,03,04 (string, optional)
+        + workType: 1,2 (string, optional)
+        + expRequire: 1,2,3 (string, optional)
+        + workArea: 1,2 (string, optional)
+        + keyword: 其他 (string, optional)
+        + startPage: 1 (number, optional)
+        + pageNum: 5 (number, optional)
+        + orderType: 1 (number, optional)
+        + orderKey: asc (string, optional)
+        
++ Response 200 (application/json)
+    + Attributes
+        + menus
+            + mID: `53` (number, required) - 選單ID
+            + mName: `人才招募網` (string, optional) - 選單名稱
+            + mType: `recruitment` (string, optional) - 選單類別
+            + description: `null` (string, optional) - 說明備註
+            + parentMenus (array[parentMenus])
+        + menusEn
+            + mID: `53` (number, required) - 選單ID
+            + mName: `Recruitment` (string, optional) - 選單名稱
+            + mType: `recruitment` (string, optional) - 選單類別
+            + description: `null` (string, optional) - 說明備註
+            + parentMenus (array[parentMenus])
+        + listRecruitmentCh (array[Recruitment])
+        + RecruitmentChNum: 20 (number, required)
+        + listRecruitmentEn (array[Recruitment])
+        + RecruitmentEnNum: 20 (number, required)
+
+
+## 取得單篇人才招募資料 [/getRecruitmentData/{ID}]
+
+### get RecruitmentData [GET]
+
+#### ID為人才招募ID
+
++ Parameters
+    + ID: `1` (number, required) - 人才招募ID
+
++ Response 200 (application/json)
+    + Attributes
+        + menus
+            + mID: `53` (number, required) - 選單ID
+            + mName: `人才招募網` (string, optional) - 選單名稱
+            + mType: `recruitment` (string, optional) - 選單類別
+            + description: `null` (string, optional) - 說明備註
+            + parentMenus (array[parentMenus])
+        + menusEn
+            + mID: `53` (number, required) - 選單ID
+            + mName: `Recruitment` (string, optional) - 選單名稱
+            + mType: `recruitment` (string, optional) - 選單類別
+            + description: `null` (string, optional) - 說明備註
+            + parentMenus (array[parentMenus])
+        + RecruitmentDetailch (RecruitmentDetails)
+        + RecruitmentDetailen (RecruitmentDetails)
+
+
+## 取得行事曆資料 - 行事曆 [/getListCanlendarData/{mID}]
+### get List CalendarData [POST]
+#### mID為選單ID
+#### division 為學組組別
++ 院本部：1
++ 數理科學組：2
++ 生命科學組：3
++ 人文及社會科學組：4
+
++ Parameters
+    + mID: `57` (number, required) - 選單ID
+
++ Request (application/json)
+    + Attributes
+        + startDate: `2022-01-01` (string, optional)
+        + endDate: `2022-01-03` (string, optional)
+        + instCode: 21 (string, optional)
+        + division: 1 (string, optional)
+        + eventCID: 1 (string, optional)
+        + keyword: 其他 (string, optional)
+
++ Response 200 (application/json)
+    + Attributes
+        + menus
+            + mID: `57` (number, required) - 選單ID
+            + mName: `近期活動` (string, optional) - 選單名稱
+            + mType: `event` (string, optional) - 選單類別
+            + description: `null` (string, optional) - 說明備註
+            + parentMenus (array[parentMenus])
+        + menusEn
+            + mID: `57` (number, required) - 選單ID
+            + mName: `Events` (string, optional) - 選單名稱
+            + mType: `event` (string, optional) - 選單類別
+            + description: `null` (string, optional) - 說明備註
+            + parentMenus (array[parentMenus])
+        + CanlendarDataCh (array[Canlendar])
+        + CanlendarDataEn (array[Canlendar])
+
+
+## 取得行事曆資料 - 時間軸 [/getTimelineData/{mID}]
+### get TimelineData [POST]
+#### mID為選單ID
+#### division 為學組組別
++ 院本部：1
++ 數理科學組：2
++ 生命科學組：3
++ 人文及社會科學組：4
+
++ Parameters
+    + mID: `57` (number, required) - mID 選單
+    
++ Request (application/json)
+    + Attributes
+        + startDate: `2022-01-01` (string, optional)
+        + endDate: `2022-01-03` (string, optional)
+        + instCode: 21 (string, optional)
+        + division: 1 (string, optional)
+        + eventCID: 1 (string, optional)
+        + keyword: 其他 (string, optional)
+
++ Response 200 (application/json)
+    + Attributes
+        + menus
+            + mID: `57` (number, required) - 選單ID
+            + mName: `近期活動` (string, optional) - 選單名稱
+            + mType: `event` (string, optional) - 選單類別
+            + description: `null` (string, optional) - 說明備註
+            + parentMenus (array[parentMenus])
+        + menusEn
+            + mID: `57` (number, required) - 選單ID
+            + mName: `Events` (string, optional) - 選單名稱
+            + mType: `event` (string, optional) - 選單類別
+            + description: `null` (string, optional) - 說明備註
+            + parentMenus (array[parentMenus])
+        + TimelineDataCh (array[Timeline])
+        + TimelineDataEn (array[Timeline])
+
+
+## 取得單篇行事曆資料 [/getEventinfoData/{ID}]
+### get Calendar Event info [GET]
+#### mID為選單ID
+#### division 為學組組別
++ 院本部：1
++ 數理科學組：2
++ 生命科學組：3
++ 人文及社會科學組：4
+
++ Parameters
+    + ID: `3` (number, required) - ID
+
++ Response 200 (application/json)
+    + Attributes
+        + menus
+            + mID: `57` (number, required) - 選單ID
+            + mName: `近期活動` (string, optional) - 選單名稱
+            + mType: `event` (string, optional) - 選單類別
+            + description: `null` (string, optional) - 說明備註
+            + parentMenus (array[parentMenus])
+        + menusEn
+            + mID: `57` (number, required) - 選單ID
+            + mName: `Events` (string, optional) - 選單名稱
+            + mType: `event` (string, optional) - 選單類別
+            + description: `null` (string, optional) - 說明備註
+            + parentMenus (array[parentMenus])
+        + EventinfoDataCh (Eventinfo)
+        + EventinfoDataEn (Eventinfo)
+
+## 取得空白版型資料 [/getPage/{mID}]
+### get PageData [GET]
+#### mID為選單ID
++ Parameters
+    + mID: `10` (number, required) - 選單ID
+
++ Response 200 (application/json)
+    + Attributes
+        + menus
+            + mID: `10` (number, required) - 選單ID
+            + mName: `交通資訊` (string, optional) - 選單名稱
+            + mType: `page` (string, optional) - 選單類別
+            + description: `null` (string, optional) - 說明備註
+            + parentMenus (array[parentMenus])
+        + menusEn
+            + mID: `10` (number, required) - 選單ID
+            + mName: `Location and Transportation` (string, optional) - 選單名稱
+            + mType: `page` (string, optional) - 選單類別
+            + description: `null` (string, optional) - 說明備註
+            + parentMenus (array[parentMenus])
+        + pageCh (Page)
+        + pageEn (Page)
+
+## 研究人員列表頁 [/Researcherlist/{mID}]
+### get Researcherlist [POST]
+#### mID為選單ID
+#### division 為學組組別
++ 院本部：1
++ 數理科學組：2
++ 生命科學組：3
++ 人文及社會科學組：4
+
++ Parameters
+    + mID: `129` (number, required) - 選單ID
+
++ Request (application/json)
+    + Attributes
+        + division: null (string, optional)
+        + instCode: 01 (string, optional)
+        + keyword: null (string, optional)
+        + startPage: 1 (number, optional)
+        + pageNum: 5 (number, optional)
+    
++ Response 200 (application/json)
+    + Attributes
+        + menus
+            + mID: `129` (number, required) - 選單Id
+            + mName: `研究人員` (string, optional) - 選單名稱
+            + mType: `researcher` (string, optional) - 版型類別
+            + description: `null` (string, optional) - 說明備註
+            + parentMenus (array[parentMenus])
+        + menusEn
+            + mID: `129` (number, required) - 選單Id
+            + mName: `Researcher` (string, optional) - 選單名稱
+            + mType: `researcher` (string, optional) - 版型類別
+            + description: `null` (string, optional) - 說明備註
+            + parentMenus (array[parentMenus])
+        + ResearcherCh (array[ResearcherData])
+        + ResearcherChNum: 5 (number, required)
+        + ResearcherEn (array[ResearcherData])
+        + ResearcherEnNum: 5 (number, required)
+
+## 取得研究人員資料 [/getResearcherData/{researcherID}]
+### get ResearcherData [GET]
+#### ID為研究人員ID
++ Parameters
+    + researcherID: `1` (number, required) - researcherID
+
++ Response 200 (application/json)
+    + Attributes
+        + menus
+            + mID: `129` (number, required) - 選單Id
+            + mName: `研究人員` (string, optional) - 選單名稱
+            + mType: `researcher` (string, optional) - 版型類別
+            + description: `null` (string, optional) - 說明備註
+            + parentMenus (array[parentMenus])
+        + menusEn
+            + mID: `129` (number, required) - 選單Id
+            + mName: `Researcher` (string, optional) - 選單名稱
+            + mType: `researcher` (string, optional) - 版型類別
+            + description: `null` (string, optional) - 說明備註
+            + parentMenus (array[parentMenus])
+        + ResearcherDetailCh (ResearcherDetail)
+        + ResearcherDetailEn (ResearcherDetail)
+
+## 取得行事曆訂閱資料 [/getGoogleCalendarData]
+### get GoogleCalendarData [POST]
+#### division 為學組組別
++ 院本部：1
++ 數理科學組：2
++ 生命科學組：3
++ 人文及社會科學組：4
+
++ Request (application/json)
+    + Attributes
+        + division: 1 (string, optional)
+        
++ Response 200 (application/json)
+    + Attributes
+        + GoogleCalendarDatalCh (array[GoogleCalendarData])
+        + GoogleCalendarDataEn (array[GoogleCalendarData])
+
+## 取得熱門關鍵字 [/getKeywordData]
+### get KeywordData [GET]
+
++ Response 200 (application/json)
+    + Attributes
+        + keywordCh (keyword)
+        + keywordEn (keyword)
+
+## 取得近 5 個月新聞公告數量 [/newsNumforBI]
+### get newsNumforBI [GET]
+- m為當月月份  
+計算 m, m-1, m-2, m-3, m-4 新聞公告數量
+
++ Response 200 (application/json)
+    + Attributes
+        + title: `2023-06-01` (string) - 類別
+        + newsData: `0` (number) - 數量
+        + catID: `6` (string) - 類別代碼
+        + catTitle: `學術行政` (string) - 類別名稱
+
+## 取得前 6 個月院本部處室處網及院網瀏覽量 [/webPageiewsforBI]
+### get webPageiewsforBI [GET]
+- 由 Google Analytics GA4 api 取得資料
+- m為當月月份  
+計算 m-1, m-2, m-3, m-4, m-5, m-6 院本部各處處網及院網中英文的瀏覽數量
+
++ Response 200 (application/json)
+    + Attributes
+        + UnitName: `15資訊服務處` (string) - 名稱
+        + month: `2023-06-01` (string) - 月份
+        + value: `5389` (number) - 瀏覽數量
+
+## 取得前 5 個月院網中/英文連結點擊數 [/newsPageviews/{lang}]
+### get newsPageviews [GET]
+#### lang 為語言
++ 中文：ch
++ 英文：en
+- 由 Google Analytics GA4 api 取得資料
+- m為當月月份  
+計算 m-1, m-2, m-3, m-4, m-5 院網瀏覽數量
+
++ Parameters
+    + lang: `ch` (string, required) - 中文
+
++ Response 200 (application/json)
+    + Attributes
+        + url: `www.sinica.edu.tw/` (string) - 網址
+        + ID: `null` (string) - 新聞ID
+        + title: `中央研究院-首頁` (string) - 網站標題
+        + value: `212229` (number) - 瀏覽數量
+
+## 取得工作地點 [/getWorkAreaData]
+### get WorkAreaData [GET]
+
++ Response 200 (application/json)
+    + Attributes
+        + Data (array[WorkAreaData])
+        + DataEn (array[WorkAreaData])
+
+## 取得學經歷 [/getExpRequireData]
+### get ExpRequireData [GET]
+
++ Response 200 (application/json)
+    + Attributes
+        + Data (array[ExpRequireData])
+        + DataEn (array[ExpRequireData])
+
+
+## 取得工作類別 [/getWorkTypeCatData]
+### get WorkTypeCatData [GET]
+
++ Response 200 (application/json)
+    + Attributes
+        + Data (array[WorkTypeCatData])
+        + DataEn (array[WorkTypeCatData])
+
+## 取得職位 [/getWorkTypeData]
+### get WorkTypeData [GET]
+
++ Response 200 (application/json)
+    + Attributes
+        + Data (array[WorkTypeData])
+        + DataEn (array[WorkTypeData])
+
+## 取得職缺關鍵字 [/getJobOpeningKeywordData]
+### get JobOpeningKeywordData [GET]
+
++ Response 200 (application/json)
+    + Attributes
+        + Data (array[JobOpeningKeyword])
+        + DataEn (array[JobOpeningKeyword])
+
+# Data Structures
+## HomeMenu
++ mID: 2 (number, required) - 選單Id
++ linkOut: 0 (enum, required)
+    + 0 - 沒有外連
+    + 1 - 外部連結
++ mName: `關於中研院` (string, required) - 選單名稱
++ linkUrl: null (string, optional) - 外連連結
++ serial: `1` (number, required) - 排序
++ target: `_self` (string, optional) - 連結動作
++ mType: `directory` (string, required) - 版型類別
++ listype: null (string, required) - 預設列表顯示
++ menus (array[HomeMenu], required)
+
+## MenuCarousel
++ ID: 2 (number, required) - 選單輪播圖Id
++ title: `院士專區` (string, required) - 選單輪播圖名稱
++ imgUrl: `https://file.apps.edu.tw/asweb/image/2023/3003llK3l73RreNQnsaVJPAU/院士專區.jpg` (string, required) - 選單輪播圖檔案路徑
++ linkOut: 0 (enum, required)
+    + 0 - 沒有外連
+    + 1 - 外部連結
++ target: `_self` (string, optional) - 連結動作
++ linkUrl: null (string, optional) - 外連連結
++ targetMID: 6 (number, optional) - 選單連結
++ serial: `1` (number, required) - 排序
+
+## Layer2
++ mID: 3 (number, required) - 選單Id
++ linkOut: 0 (enum, required)
+    + 0 - 沒有外連
+    + 1 - 外部連結
++ mName: `簡介` (string, required) - 選單名稱
++ linkUrl: null (string, optional) - 外連連結
++ serial: `1` (number, required) - 排序
++ target: `_self` (string, optional) - 連結動作
++ mType: `directory` (string, required) - 版型類別
++ listype: null (string, required) - 預設列表顯示
++ menus (array[HomeMenu], required)
+
+## CarouselData
++ ID: 1 (number, required) - ID
++ title: `輪播圖1` (string, required) - 輪播圖名稱
++ summary: `描述` (string, required) - 輪播圖描述
++ imgUrl: https://www.sinica.edu.tw (string, required) - 輪播圖片網址
++ startTime: `2022-8-22` (string, required) - 開始時間
++ endTime: `2022-8-25` (string, required) - 結束時間
++ linkOut: 0 (enum, required)
+    + 0 - 沒有外連
+    + 1 - 外部連結
++ linkUrl: https://www.sinica.edu.tw/ch (string, optional) - 外連連結
++ serial: `1` (number, required) - 排序
++ target: `_self` (string, optional) - 連結動作
+
+## NewsCarousel
++ ID: 1 (number, required) - ID
++ title: `輪播圖1` (string, required) - 新聞標題名稱
++ summary: `描述` (string, required) - 新聞描述
++ imgUrl: https://www.sinica.edu.tw (string, required) - 新聞圖片網址
++ pubDate: `2022-8-22` (string, required) - 發佈時間
++ linkOut: 0 (enum, required)
+    + 0 - 沒有外連
+    + 1 - 外部連結
++ linkUrl: https://www.sinica.edu.tw/ch (string, optional) - 外連連結
++ serial: `1` (number, required) - 排序
++ target: `_self` (string, optional) - 連結動作
+
+## Event
++ nID: 1 (number, required) - ID
++ title: `學術行政` (string, required) - 標題
++ oName: `院本部` (string, optional)- 單位
++ catName: `學術活動` (string, optional)- 類別名稱
++ pubDate: `2022-08-23` (string, required) - 發佈時間
++ linkOut: 0 (enum, required)
+    + 0 - 沒有外連
+    + 1 - 外部連結
++ linkUrl: https://www.sinica.edu.tw/ch (string, optional) - 外連連結
++ serial: `1` (number, required) - 排序
++ target: `_self` (string, optional) - 連結動作
+
+## HomeRecruitment
++ rID: 1 (number, required) - ID
++ title: `勞雇型兼任人員` (string, required) - 職務名稱
++ division: `人文社會科學組` (string, optional)- 組別
++ oName: `法律學研究所` (string, optional)- 單位
++ dept: `蘇彥圖副研究員研究室` (string, optional)- 部門
++ startDate: `2022-08-23` (string, required) - 開始日期
++ endDate: `2022-08-27` (string, required) - 結束日期
++ serial: `1` (number, required) - 排序
+
+## HomeCalendar
++ eventID: 1 (number, required) - ID
++ eventName: `2022東南亞研究青年學者工作坊` (string, required) - 活動標題
++ eventCategoryName: `演講` (string, required) - 活動類別
++ oName: `法律學研究所` (string, optional)- 單位
++ startTime: `2022-08-23 14:00:00` (string, required) - 開始時間
++ endTime: `2022-08-27 14:00:00` (string, required) - 結束時間
++ serial: `1` (number, required) - 排序
+
+## research
++ ID: 1 (number, required) - ID
++ title: `輪播圖1` (string, required) - 研究成果標題名稱
++ summary: `描述` (string, required) - 研究成果描述
++ imgUrl: https://www.sinica.edu.tw (string, required) - 研究成果圖片網址
++ pubDate: `2022-8-22` (string, required) - 發佈時間
++ linkOut: 0 (enum, required)
+    + 0 - 沒有外連
+    + 1 - 外部連結
++ linkUrl: https://www.sinica.edu.tw/ch (string, optional) - 外連連結
++ serial: `1` (number, required) - 排序
++ target: `_self` (string, optional) - 連結動作
+
+## Zone
++ ID: 69 (number, required) - ID
++ ZoneName: `防疫專區` (string, required) - 專區名稱
++ serial: `1` (number, required) - 排序
++ imgUrl: https://www.sinica.edu.tw (string, required) - 專區圖片網址
++ + linkOut: 0 (enum, required)
+    + 0 - 沒有外連
+    + 1 - 外部連結
++ linkUrl: https://www.sinica.edu.tw/ch (string, optional) - 外連連結
++ target: `_self` (string, optional) - 連結動作
++ mType: `tab` (string, required) - 版型類別
+
+## parentMenus
++ mID: 54 (number, required) - 選單Id
++ mName: `新聞與活動` (string, required) - 選單名稱
++ mType: `directory` (string, required) - 版型類別
++ linkOut: 0 (enum, required)
+    + 0 - 沒有外連
+    + 1 - 外部連結
++ linkUrl: null (string, optional) - 外連連結
++ target: `_self` (string, optional) - 連結動作
+
+
+## newsData
++ ID: `1` (number, required) - 新聞ID
++ title: `中研院院區開放 10/29實體回歸！10/28-29 線上同步登場` (string, required) - 新聞標題
++ catID: `1` (number, required) - 新聞類別ID
++ catName: `會議活動` (string, required) - 新聞類別名稱
++ instCode: `02` (string, required) - 單位ID
++ oName: `秘書處` (string, required) - 新聞單位名稱
++ pubDate: `2023-02-06` (string, required) -新聞上稿日期
++ linkOut:  `0` (enum, required)
+    + 0 - 沒有外連
+    + 1 - 外部連結
++ linkUrl: null (string, optional) - 連結網址
++ target: `_self` (string, optional) - 連結動作
+
+
+## newsDataWithImg
++ ID: `1` (number, required) - 新聞ID
++ title: `中研院院區開放 10/29實體回歸！10/28-29 線上同步登場` (string, required) - 新聞標題
++ summary: `臺灣最盛大的科學嘉年華:中央研究院「院區開放」（Open House）」參觀活動，去年受疫情影響採線上舉` (string, required) - 新聞描述
++ imgUrl: `asweb/image/2023/0702uWPxoTpqgLamQvKEDy1W/5656jpg` (string, required) - 新聞圖片位置
++ instCode: `02` (string, required) - 單位ID
++ oName: `秘書處` (string, required) - 新聞單位名稱
++ catID: `1` (number, required) - 新聞類別ID
++ catName: `議會活動` (string, required) - 新聞類別名稱
++ pubDate: `2023-02-06` (string, required) -新聞上稿日期
++ linkOut:  `0` (enum, required)
+    + 0 - 沒有外連
+    + 1 - 外部連結
++ linkUrl: null (string, optional) - 連結網址
++ target: `_self` (string, optional) - 連結動作
+
+## NewsDetails
++ title: `中研院院區開放 10/29實體回歸！10/28-29 線上同步登場</p>` (string, required) - 新聞
++ contents: `<p>臺灣最盛大的科學嘉年華—中央研究院「院區開放」（Open House）」參觀活動，去年受疫情影響採線上舉行，今年實體回歸，將於本（111）年10月29日（六）登場！往年「一日限定」的節目內容也特別加場，線上活動於10月28日（五）至29日（六）加碼舉行，一連2天總計有演講座談、實驗室參觀、互動體驗等將近200場活動，虛實串聯，讓民眾不論現場參觀或在家都能盡情參與，開箱中研院的人文及科研寶藏。</p><p>中研院表示，院區開放舉辦25年以來，已成為眾多科普迷們引頸期盼的年度盛會，多所學校師生每年均特地組團參觀，或有「鐵粉」從外縣市遠道而來，參觀人次屢創新高。為激發學生們探索科學及人文研究的熱情，今年主題演講首次安排院內年輕優秀學者發表短講，並由廖俊智院長主持，主講人包括：應用科學研究中心陳壁彰副研究員、細胞與個體生物學研究所陳振輝助研究員、中國文哲研究所劉瓊云副研究員。本場次也將於線上同步直播，透過一場90分鐘的演講，一次獲取數理、生命、人文領域的專業知識。</p>` (string, required) - 新聞內容
++ pubDate: `2023-02-06` (string, required) - 新聞上稿日期
++ dueDate: `2023-03-21` (string, required) - 新聞結束日期
++ videos (array[videos])
++ img (array[img])
++ newscontact (array[newscontact]) - 新聞聯絡人
++ file (array[file]) - 相關檔案
++ links (array[links]) - 相關連結
++ tags (array[tags]) - 標籤
++ reading (array[reading]) - 相關文章
+
+## reading
++ ID: `ID` (string, required) - 新聞ID
++ title: `量子電子元件hen夯, 但如何掌握像情人心難測的量子位元?` (string, required) - 新聞ID
++ tags (array[tags])
+
+## videos
++ videoUrl: `https://www.youtube.com/watch?v=XXXXX` (string, required) - 影音網址
+
+## img
++ path: `asweb/image/2023/XXXXX/4456546.jpg` (string, required) - 圖片路徑
++ alt: `4456546` (string, required) - alt
+
+## newscontact
++ contactName: `XXX，中央研究院秘書處媒體小組` (string, required) - 聯絡人名稱
++ contactInfo: `XXXXX@gate.sinica.edu.tw，(Tel) +XXX-2-XXXX-25XX` (string, required) - 聯絡人資訊
+
+## file
++ path: `asweb/file/2023/XXXXXXXX/XXX.pdf` (string, required) - 檔案路徑
++ fileName: `XXX.pdf` (string, required) - 檔案路徑
+
+## links
++ linkName: `連結` (string, required) - 連結名稱
++ linkUrl: `https://www.youtube.com/watch?v=XXXXX` (string, required) - 連結網址
++ serial: `1` (number, required) - 排序
+
+## tags
++ tagID: `8` (number, required) - 標籤ID
++ tagName: `淨零排放` (string, required) - 標籤名稱 
+
+## NewCat
++ catID: 1 (number, required) - catID
++ catName: `會議活動` (string, required) - 新聞類別名稱
++ serial: `0` (number, required) - 排序
+
+## EventCat
++ eventCID: 1 (number, required) - catID
++ eventCategoryName: `演講或講座` (string, required) - 活動類別名稱
++ serial: `0` (number, required) - 排序
+
+## InstData
++ InstCode: `01` (string, required) - catID
++ InstName: `院本部` (string, required) - 單位名稱
++ division: `院本部` (string, required) - 學組
++ serial: `1` (number, required) - 排序
+
+## InstDataTwoLayers
++ division: `1`
++ divisionName: `院本部` (string, required) - 學組
++ Institutes (array[Institutes])
+
+## Institutes
++ InstCode: `01` (string, required) - catID
++ InstName: `院本部` (string, required) - 單位名稱
++ serial: `1` (number, required) - 排序
+
+## gallery
++ title: `台灣年度科普盛事! 中研院院區開放 吸引上萬人參觀` (string, required) - 相簿標題
++ catID: `1` (number, required) - 類別ID
++ catName: `議會活動` (string, required) - 類別名稱
++ instCode: `02` (string, required) - 單位ID
++ oName: `秘書處` (string, required) - 單位名稱
++ pubDate: `111-10-29` (string, required) - 相簿上架時間
++ dueDate: `111-11-29` (string, required) - 相簿下架時間
++ serial: `1` (number, required) - 排序
++ photos (array[photos])
+
+## photos
++ title: `台灣年度科普盛事! 中研院院區開放 吸引上萬人參觀` (string, required) - 相片標題
++ serial: `1` (number, required) - 排序 
++ photosPath: `asweb/image/2023/XXXXX/4456546.jpg` (string, required) - 相片路徑
+
+## Video
++ vID: `1` (number, required) - 影音ID
++ title: `歷史學與犯罪學的相遇：19世紀中葉竊盜犯罪的分析 | 巫仁恕研究員` (string, required) - 影片標題
++ catID: `1` (number, required) - 類別ID
++ catName: `議會活動` (string, required) - 類別名稱
++ instCode: `02` (string, required) - 單位ID
++ oName: `秘書處` (string, required) - 單位名稱
++ videoUrl: `https://www.youtube.com/watch?v=LHNV4wuCF-w` (string, required) - 影片YT網址
++ pubDate: `111-10-29` (string, required) - 影片上架時間
++ dueDate: `111-11-29` (string, required) - 影片下架時間
++ serial: `1` (number, required) - 排序 
+
+## Paragraph
++ title: `檔案專區` (string, required) - 連續空白版型-標題
++ pubDate: `2022-10-29` (string, required) - 上架時間
++ dueDate: `2022-11-29` (string, required) - 下架時間
++ paragraphContent (array[paragraphContent]) - 連續空白版型內容
+
+## paragraphContent
++ contents: `<p><img class="image-style-align-left" src="http://localhost:8000/file/showImg/ch/13020G0UOwuyReNLhSzhbSmV">秘書處</p><p>應用閱覽：9：00-11：30，14：00-16：30，週一至週五，國定假日不開放。<br>電話：+886-2-2789-9486<br>傳真：+886-2-2785-3847<br>E-mail：odm@gate.sinica.edu.tw<br>網站：http://sec.sinica.edu.tw</p><p>&nbsp;</p>` (string, required) - 連續空白文章內容
++ serial: `1` (number, required) - 排序
+
+## Tab
++ title: `本院公告` (string, required) - 頁籤標題
++ contents: `<p>111/c權責釐清報告<br>110/12/24【院長致基因體研究中心同仁信】 pdf檔案下載<br>110/12/24因應疫情發展，調整本院辦公模式及場所管制<br>110/12/20【新聞稿】中研院提交染疫調查報告 廖院長提三大改革措施<br>110/12/1512月15日 新冠肺炎相關篩檢接種事項說明<br>110/12/10【新聞稿】針對實驗室人員染疫事件，本院組成調查小組 宣示調查決心<br>110/12/09【新聞稿】12月9日 針對新冠疫情一事本院說明<br>110/05/28【臉書貼文】全力抗疫，中研院始終如一 pdf檔案下載<br>109/12/30新冠病毒變異全球即時監測網（新增英國變種新冠病毒Ｑ&amp;Ａ）<br>109/04/19指揮中心近日宣布新増24例確診個案，請同仁配合加強注意事項 pdf檔案下載 pdf檔案下載<br>109/04/16指揮中心宣布中研院結案 pdf檔案下載 pdf檔案下載<br>109/03/26因應疫情—協助學生免費住宿方案 pdf檔案下載 pdf檔案下載<br>109/03/26本院接觸者採檢結果均為陰性；因應疫情—協助學生免費住宿方案 pdf檔案下載 pdf檔案下載<br>109/03/26本院4位確診個案均為同實驗室且在相同樓層，該所全員自3/23起居家辦公2週 pdf檔案下載 pdf檔案下載<br>109/03/25【院長於本院官方臉書貼文】致關心中研院的朋友 pdf檔案下載 pdf檔案下載<br>109/03/24澄清：3月23日公布確診女性，非本院員工<br>109/03/23經查證1位確診同仁曾於3/12到過體育館停留約2小時；同仁若有同住親友於過去14 天入境者，應居家辦公2週；新增防疫專線服務等。 pdf檔案下載 pdf檔案下載<br>109/03/23【新聞稿】3月22日 說明本院新冠肺炎疫情<br>109/03/21確診案後續說明：確診個案前2日活動範圍揭露 pdf檔案下載 pdf檔案下載<br>109/03/21【新聞稿】中研院因應COVID-19防疫相關措施<br>109/03/20確診案 (Confirmed Case)：本院首例個案確認後之因應作為，及防疫措施說明。 pdf檔案下載 pdf檔案下載<br>109/03/20【院長致全院同仁信】關於新冠肺炎 pdf檔案下載 pdf檔案下載<br>&nbsp;</p>` (string, required) - 頁籤內容
++ anchorText: `announcement` (string, required) - 錨點名稱
++ serial: `1` (number, required) - 排序 
+
+## Section
++ title: `區間車行車路線暨時刻表(國定假日停駛)` (string, required) - 區塊標題
++ contents: `<p>行駛時間：請參考附件連結。<br>聯絡電話：(02)2789-9827</p><p>聯絡信箱</p><p>本院區間車路線暨時刻表</p>` (string, required) - 區塊文章內容
++ imgUrl: `asweb/image/2023/XXXXX/4456546.jpg` (string, required) - 圖片路徑
++ serial: `1` (number, required) - 排序
+
+## Multilink
++ groupTitle: `學術系統`
++ groupTitleEn: `Academic Systems`
++ links (array[links])
++ serial:`1`
+
+## Directory
++ mID: 4 (number, required) - 選單Id
++ mName: `簡史` (string, required) - 選單名稱
++ linkOut: 0 (enum, required)
+    + 0 - 沒有外連
+    + 1 - 外部連結
++ linkUrl: null (string, optional) - 外連連結
++ serial: `1` (number, required) - 排序
++ target: `_self` (string, optional) - 連結動作
++ mType: `page` (string, required) - 版型類別
+
+## Recruitment
++ rID: 1 (number, required) - 人才招募ID
++ title: `郭青齡實驗室` (string, required) - 職務名稱
++ instCode: `02` (string, required) - 單位ID
++ division: `數理學科組` (string, required) - 學組
++ oName: `物理研究所` (string, required) - 單位
++ dept: `物理研究所` (string, required) - 部門
++ content: `1. 細胞培養、組織工程、分生實驗等細胞相關實驗。<br>2. 影像處理及分析。<br>3. 實驗室日常維護、採買和相關行政作業` (string, required) - 內容
++ beginDate: `2023-03-13` (string, required) - 開始時間
++ endDate: `2023-04-01` (string, required) - 截止時間
++ serial: `1` (number, required) - 排序
+
+## Page
++ title: `本院位置及交通資訊` (string, required) - 空白版型-標題
++ contents: `<p>本院位置</p><ul><li>中央研究院位置圖</li><li>中央研究院院區導覽地圖</li><li>中央研究院電子地圖</li></ul><p>中研院導覽GO</p>` (string, required) 空白版型-內容
++ linkOut: `0` (enum, required)
+    + 0 - 沒有外連
+    + 1 - 外部連結
++ linkUrl: null (string, optional)
++ updateDate: `2023-02-16` (string, required) - 更新時間
+
+## RecruitmentDetails
++ ID: `1` (number, required)
++ title: `博士後研究人員` (string, required)
++ oName: `秘書處` (string, required)
++ dept: null (string, optional)
++ needNumber: `1`  (number, optional)
++ content: `1.新型態配子設計及有機金屬錯合物開發 2.有機金屬催化反應設計 3.協助研究計畫之執行與研究成果之發表`  (string, optional)
++ qualification: `1.具有機金屬、催化、有機合成等相關領域<br>2.光反應或配體設計背景者優先考慮<br>3.具英文聽說讀寫能力，有英文文獻發表經驗<br>4.對研究有熱忱（擬從事學術研究者尤佳）、細心、態度積極有責任感、具備獨立研究精神、能與他人合作者` (string, required)
++ workTime: `8:30~17:30` (string, required)
++ workPlace: `中央研究院化學研究所，台灣` (string, required)
++ payment: `博士60274起薪` (string, required)
++ benefit: null (string, optional)
++ website: `https://www.chem.sinica.edu.tw/faculty/index.php?piName=tgong` (string, optional)
++ clerk: `王朝諺老師/王廷瑄博士` (string, required)
++ address: `115台北市南港區研究院路二段128號` (string, required)
++ telephone: `02-5572-8648/02-5572-8646` (string, required) 
++ email: `tgong@gate.sinica.edu.tw` (string, required)
++ needPaper: `個人履歷（包含：學經歷、自傳、研究興趣、未來生涯規劃、著作等)及其他有利於審核之資料` (string, required)
++ takeMethod: `1.請於信件主旨註明「應徵博士後研究員–應徵者姓名」。2.資料審查合格者將通知面試，不合恕不函覆及退件` (string, required)
++ beginDate: `2023-02-20` (string, required)
++ endDate: `2023-04-07` (string, required)
+
+## Canlendar
++ eventID: `1` (number, required)
++ eventNameShort: `「從數學到醫學—醫學教育之我思、我見與我行」` (string, required)
++ eventName: `111年知識饗宴—吳大猷院長科普講座 「從數學到醫學—醫學教育之我思、我見與我行」` (string, required)
++ instCode: `02` (string, required)
++ oName: `秘書處` (string, required)
++ division: `院本部` (string, required)
++ eventCID: `1` (string, required)
++ catName: `演講或講座` (string, required)
++ eventState: `確定` (string, required)
++ dateRange (array[dates])
++ startTime: `2023-03-05` (string, required) - 開始時間
++ startDateTime: `2023-03-05 14:24:03` (string, required)
++ endDateTime: `2023-03-15 14:24:03` (string, required)
++ isPopScience: `1` (number, required)
+
+## dates
++ `date`: 2023-03-05 (string, required)
+
+## Timeline
++ eventID: `1` (number, required)
++ eventNameShort: `Harum magni sunt ut voluptas quas quia.` (string, required)
++ eventName: `(中文)Occaecati eos perferendis error voluptatem.` (string, required)
++ instCode: `01` (string, required)
++ oName: `1` (string, required)
++ division: `院本部` (string, required)
++ eventCID: `4` (string, required)
++ catName: `會議活動` (string, required)
++ eventState: `確定` (string, required)
++ startDateTime: `2023-05-24 03:04:00` (string, required)
++ endDateTime: `2023-05-23 02:04:00` (string, required)
++ location: `255 VonRueden StreetNorth Taylor, AZ 66444-0245` (string, required)
++ linkUrl: `https://www.sinica.edu.tw/ch` (string, required)
++ speakerName: `Raquel Kessler` (string, required)
++ isPopScience: `1` (number, required)
++ img (img)
+
+## Eventinfo
++ eventID: `1` (number, required)
++ eventName: `(中文)Occaecati eos perferendis error voluptatem.` (string, required)
++ startDateTime: `2023-05-24 03:04:00` (string, required)
++ endDateTime: `2023-05-23 02:04:00` (string, required)
++ instCode: `01` (string, required)
++ oName: `1` (string, required)
++ division: `院本部` (string, required)
++ eventCID: `4` (string, required)
++ catName: `會議活動` (string, required)
++ location: `255 VonRueden StreetNorth Taylor, AZ 66444-0245` (string, required)
++ speakerName: `Raquel Kessler` (string, required)
++ eventState: `確定` (string, required)
++ linkUrl: `https://www.sinica.edu.tw/ch` (string, required)
++ speakerName: `Raquel Kessler` (string, required)
++ contents
++ tags (array[tags]) - 標籤
++ file (array[file]) - 相關檔案
++ links (array[links]) - 相關連結
++ img (array[img]) - 相關圖片
++ videos (array[videos]) - 相關連結
+
+## ResearcherData
++ researcherID: `1` (number, required) - 研究人員ID
++ name: `廖俊智` (string, required) - 研究人員姓名
++ position: `院長` (string, required) - 職稱
++ division: `院本部` (string, required) - 學組
++ instCode: `02` (string, required) - 單位ID
++ oName: `院本部` (string, required) - 單位名稱
++ areas: `Metabolic Engineering, Synthetic Biology, and Systems Biology` (string, required) - 研究領域
+
+## ResearcherDetail
++ researcherID: `1` (number, required) - 研究人員ID
++ name: `廖俊智` (string, required) - 研究人員姓名
++ nameEn: `LIAO, JAMES C.` (string, required) - 研究人員英文姓名
++ oName: `院本部` (string, required) - 單位名稱
++ position: `院長` (string, required) - 職稱
++ linkUrl: null (string, optional) - 個人連結網址
++ education: `Ph.D., Chemical Engineering, University of Wisconsin, Madison, U.S.A.` (string, required) - 學歷
++ expertise: `Metabolic Engineering, Synthetic Biology, and Systems Biology` (string, required) - 專長
++ pubDate: `2023-02-06` (string, required) - 資料匯出日期
++ publications (array[publications])- 學術著作
+
+## publications
++ ID: `1`  (number, required) - ID
++ title: `Guo JY, Liu IJ, Lin HT, Wang MJ, Chang YL, Lin SC, Liao MY, Hsu WC, Lin YL, Liao JC, Wu HC, Jun. 2021, “Identification of COVID-19 B-cell epitopes with phage-displayed peptide library.”, Journal of biomedical science, 28(1), 43. (SCIE) (IF: 5.762; SCI ranking: 24.1%,12.2%)` (string, required) - 著作標題
+
+## GoogleCalendarData
++ instCode: `02` (string, required) - 單位ID
++ division: `數理學科組` (string, required) - 學組
++ oName: `物理研究所` (string, required) - 單位
++ previewLink:  `https://calendar.google.com/calendar/embed?src=9smfrlpuhvd60ud1cdmu7jh1gg@group.calendar.google.com` (string, required) - 單位
++ subscriptionLink: `https://calendar.google.com/calendar?cid=9smfrlpuhvd60ud1cdmu7jh1gg@group.calendar.google.com` (string, required) - 單位
+
+## keyword
++ keyword: `院區開放` (string, required) - 關鍵字
++ serial: `0` ` (number, required) - 排序
+
+## WorkAreaData
++ areaName: `南港院區` (string, required) - 工作地點
++ serial: `0` ` (number, required) - 排序
+
+## ExpRequireData
++ expName: `博士` (string, required) - 學經歷名稱
++ serial: `0` ` (number, required) - 排序
+
+## WorkTypeData
++ typeName: `研究人員及研究技術人員` (string, required) - 職位名稱
++ catID: `1` (number, required) - 工作類別代碼
++ serial: `0` ` (number, required) - 排序
+
+## WorkTypeCatData
++ catID: `1` (number, required) - 工作類別代碼
++ catName: `研究類` (string, required) - 工作類別
++ serial: `0` ` (number, required) - 排序
+
+## JobOpeningKeyword
++ keyword: `博士` (string, required) - 關鍵字
++ serial: `0` ` (number, required) - 排序
