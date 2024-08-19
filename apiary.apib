@@ -514,11 +514,9 @@ HOST:aswebapi.test5.sinica.edu.tw/api
 ### get listRecruitment [POST]
 
 #### orderType 為排序之組別
-+ 組別+單位+刊登日期：1
-+ 用人部門：2
-+ 職務名稱+單位：3
-+ 刊登日期：4
-+ 職務名稱+刊登日期：5
++ 刊登日期：1
++ 截止日期：2
++ 學經歷要求：3
 
 #### orderKey 
 + asc
@@ -529,20 +527,30 @@ HOST:aswebapi.test5.sinica.edu.tw/api
 + 數理科學組：2
 + 生命科學組：3
 + 人文及社會科學組：4
++ 跨學組研究中心: 5
 
 #### mID為選單ID
+
+#### workType為工作類型 + 職位
+
+#### workArea為工作地點
+
+#### expRequire為學經歷要求
 + Parameters
     + mID: `53` (number, required) - 選單ID
     
 + Request (application/json)
     + Attributes
-        + division: `1` (number, optional)
-        + instCode: 21 (number, optional)
-        + keyword: 其他 (string, optional)
+        + division: 1 (number, optional)
+        + instCode: `01,02,03,04` (string, optional)
+        + workType: `1,2` (string, optional)
+        + expRequire: `1,2,3` (string, optional)
+        + workArea: `1,2` (string, optional)
+        + keyword: `其他` (string, optional)
         + startPage: 1 (number, optional)
         + pageNum: 5 (number, optional)
         + orderType: 1 (number, optional)
-        + orderKey: 'asc' (string, optional)
+        + orderKey: `asc` (string, optional)
         
 + Response 200 (application/json)
 
@@ -855,6 +863,47 @@ HOST:aswebapi.test5.sinica.edu.tw/api
         + ID: `null` (string) - 新聞ID
         + title: `中央研究院-首頁` (string) - 網站標題
         + value: `212229` (number) - 瀏覽數量
+
+## 取得工作地點 [/getWorkAreaData]
+### get WorkAreaData [GET]
+
++ Response 200 (application/json)
+    + Attributes
+        + Data (array[WorkAreaData])
+        + DataEn (array[WorkAreaData])
+
+## 取得學經歷 [/getExpRequireData]
+### get ExpRequireData [GET]
+
++ Response 200 (application/json)
+    + Attributes
+        + Data (array[ExpRequireData])
+        + DataEn (array[ExpRequireData])
+
+
+## 取得工作類別 [/getWorkTypeCatData]
+### get WorkTypeCatData [GET]
+
++ Response 200 (application/json)
+    + Attributes
+        + Data (array[WorkTypeCatData])
+        + DataEn (array[WorkTypeCatData])
+
+## 取得職位 [/getWorkTypeData]
+### get WorkTypeData [GET]
+
++ Response 200 (application/json)
+    + Attributes
+        + Data (array[WorkTypeData])
+        + DataEn (array[WorkTypeData])
+
+## 取得職缺關鍵字 [/getJobOpeningKeywordData]
+### get JobOpeningKeywordData [GET]
+
++ Response 200 (application/json)
+    + Attributes
+        + Data (array[JobOpeningKeyword])
+        + DataEn (array[JobOpeningKeyword])
 
 # Data Structures
 ## HomeMenu
@@ -1292,4 +1341,27 @@ HOST:aswebapi.test5.sinica.edu.tw/api
 
 ## keyword
 + keyword: `院區開放` (string, required) - 關鍵字
++ serial: `0` ` (number, required) - 排序
+
+
+## WorkAreaData
++ areaName: `南港院區` (string, required) - 工作地點
++ serial: `0` ` (number, required) - 排序
+
+## ExpRequireData
++ expName: `博士` (string, required) - 學經歷名稱
++ serial: `0` ` (number, required) - 排序
+
+## WorkTypeData
++ typeName: `研究人員及研究技術人員` (string, required) - 職位名稱
++ catID: `1` (number, required) - 工作類別代碼
++ serial: `0` ` (number, required) - 排序
+
+## WorkTypeCatData
++ catID: `1` (number, required) - 工作類別代碼
++ catName: `研究類` (string, required) - 工作類別
++ serial: `0` ` (number, required) - 排序
+
+## JobOpeningKeyword
++ keyword: `博士` (string, required) - 關鍵字
 + serial: `0` ` (number, required) - 排序
