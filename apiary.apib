@@ -1,15 +1,19 @@
 FORMAT: 1A
 HOST:aswebapi.test5.sinica.edu.tw/api
-# asweb
+# asweb_2022
 
 院網API
 
 ## 取得網站基本資訊 [/getWebinfo]
+
 ### get base WebInfo [GET]
-透過此動作可取得院網相關基本資訊。  
-例如，網站地址、電話、意見信箱、社群網站LINK、無障礙標章等。  
+
+透過此動作可取得院網相關基本資訊。
+
+例如，網站地址、電話、意見信箱、社群網站LINK、無障礙標章等
 
 + Response 200 (application/json)
+
     + Attributes
         + address: `11529 台北市南港區研究院路二段128號` (string, required) - 地址
         + addressEn: `128 Academia Road, Section 2, Nankang, Taipei 11529` (string, required) - 地址(英)
@@ -26,8 +30,10 @@ HOST:aswebapi.test5.sinica.edu.tw/api
 ## 取得選單 [/getMenus/{mID}]
 
 ### get Menus [GET]
-透過此動作可取得院網選單，這個動作需要傳入一個父節點選單的ID。  
-此動作會回傳父選單ID下的所有子選單。  
+透過此動作可取得院網選單，這個動作需要傳入一個父節點選單的ID。
+
+此動作會回傳父選單ID下的所有子選單。
+
 #### 以下為各選單父節點ID
 + 前端主選單：-1
 + 前端上方選單：-2
@@ -44,8 +50,10 @@ HOST:aswebapi.test5.sinica.edu.tw/api
         + menusEn (array[HomeMenu])
 
 ## 取得選單輪播圖 [/getMenuCarousel/{mID}]
+
 ### get MenuCarousel [GET]
-透過此動作可取得院網選單，這個動作需要傳入一個父節點選單的ID。  
+透過此動作可取得院網選單，這個動作需要傳入一個父節點選單的ID。
+
 此動作會回傳父選單ID下的輪播圖。
 
 + Parameters
@@ -57,6 +65,7 @@ HOST:aswebapi.test5.sinica.edu.tw/api
         + menuCarouselEn (array[MenuCarousel])
 
 ## 取得輪播圖 [/getCarousel]
+
 ### get Carousel [GET]
 透過此動作可取得輪播圖資料。
 
@@ -67,6 +76,7 @@ HOST:aswebapi.test5.sinica.edu.tw/api
 
 
 ## 取得新聞輪播 [/getNewsCarousel]
+
 ### get NewsCarousel [GET]
 透過此動作可取得新聞輪播相關資訊
     
@@ -81,6 +91,7 @@ HOST:aswebapi.test5.sinica.edu.tw/api
 
 
 ## 取得首頁學術行政 [/getEvents]
+
 ### get Events [GET]
 透過此動作可取得院網首頁學術行政資料
     
@@ -95,8 +106,10 @@ HOST:aswebapi.test5.sinica.edu.tw/api
 
 
 ## 取得徵才訊息 [/getRecruitment]
+
 ### get Recruitments [GET]
 透過此動作可取得院網首頁徵才資訊資料
+
 #### division 為學組組別
 + 院本部：1
 + 數理科學組：2
@@ -112,8 +125,10 @@ HOST:aswebapi.test5.sinica.edu.tw/api
         + mID: 53 (number, required) - 選單ID
 
 ## 取得近期活動 [/getCalendars]
+
 ### get Calendars [GET]
-透過此動作可取得院網首頁活動資料  
+透過此動作可取得院網首頁活動資料
+    
 + Response 200 (application/json)
     + Attributes
         + Calendars (array[HomeCalendar])
@@ -124,8 +139,10 @@ HOST:aswebapi.test5.sinica.edu.tw/api
 
 
 ## 取得研究成果 [/getResearchCarousel]
+
 ### get ResearchCarousel [GET]
-透過此動作可取得研究成果輪播相關資訊  
+透過此動作可取得研究成果輪播相關資訊
+    
 + Response 200 (application/json)
     + Attributes
         + researchData (array[research])
@@ -135,30 +152,39 @@ HOST:aswebapi.test5.sinica.edu.tw/api
         + mID: 36 (number, required) - 選單ID
 
 ## 取得專區 [/getZonesData]
+
 ### get ZonesData [GET]
-透過此動作可取得院網首頁專區  
+透過此動作可取得院網首頁專區
+    
 + Response 200 (application/json)
     + Attributes
         + Datas (array[Zone])
         + DatasEn (array[Zone])
 
 ## 取得新聞類別 [/getNewCatData]
+
 ### get NewCatData [GET]
+    
 + Response 200 (application/json)
     + Attributes
         + Data (array[NewCat])
         + DataEn (array[NewCat])
 
 ## 取得活動類別 [/getEventCatData]
+
 ### get EventCatData [GET]
+    
 + Response 200 (application/json)
     + Attributes
         + Data (array[EventCat])
         + DataEn (array[EventCat])
 
 ## 取得單位 [/getInstData]
+
 ### get InstData [GET]
-*/是不是只需提供有發布新聞之單位  
+
+*/是不是只需提供有發布新聞之單位
+
 #### division 為學組組別
 + 院本部：1
 + 數理科學組：2
@@ -172,13 +198,14 @@ HOST:aswebapi.test5.sinica.edu.tw/api
 
 
 ## 取得單位2層選單 [/getInstDataTwoLayers]
+
 ### get InstDataTwoLayers [GET]
+
 #### division 為學組組別
 + 院本部：1
 + 數理科學組：2
 + 生命科學組：3
 + 人文及社會科學組：4
-+ 跨學組研究中心: 5
 
 + Response 200 (application/json)
     + Attributes
@@ -187,15 +214,18 @@ HOST:aswebapi.test5.sinica.edu.tw/api
 
 
 ## 新聞列表頁-table [/getNewlist/{mID}]
+
 ### get Newlist [POST]
+
 #### mID為選單ID
+
 + Parameters
     + mID: `55` (number, required) - 選單ID
 
 + Request (application/json)
     + Attributes
-        + startDate: `2022-01-01` (string, optional)
-        + endDate: `2022-01-03` (string, optional)
+        + startData: `2022-01-01` (string, optional)
+        + endData: `2022-01-03` (string, optional)
         + instCode: 21 (string, optional)
         + catID: 4 (string, optional)
         + keyword: 其他 (string, optional)
@@ -208,13 +238,11 @@ HOST:aswebapi.test5.sinica.edu.tw/api
             + mID: `55` (number, required) - 選單Id
             + mName: `新聞訊息` (string, optional) - 選單名稱
             + mType: `news` (string, optional) - 版型類別
-            + description: `null` (string, optional) - 說明備註
             + parentMenus (array[parentMenus])
         + menusEn
             + mID: `55` (number, required) - 選單Id
             + mName: `Press Releases` (string, optional) - 選單名稱
             + mType: `news` (string, optional) - 版型類別
-            + description: `null` (string, optional) - 說明備註
             + parentMenus (array[parentMenus])
         + news (array[newsData])
         + newsNum: 20 (number, required)
@@ -223,15 +251,18 @@ HOST:aswebapi.test5.sinica.edu.tw/api
     
 
 ## 新聞列表頁-cards [/getNewlistWithimg/{mID}]
+
 ### get NewlistWithimg [POST]
+
 #### mID為選單ID
+
 + Parameters
     + mID: `55` (number, required) - 選單ID
 
 + Request (application/json)
     + Attributes
-        + startDate: `2022-01-01` (string, optional)
-        + endDate: `2022-01-03` (string, optional)
+        + startData: `2022-01-01` (string, optional)
+        + endData: `2022-01-03` (string, optional)
         + instCode: 21 (string, optional)
         + catID: 4 (string, optional)
         + keyword: 其他 (string, optional)
@@ -244,13 +275,11 @@ HOST:aswebapi.test5.sinica.edu.tw/api
             + mID: `55` (number, required) - 選單ID
             + mName: `新聞訊息` (string, optional) - 選單名稱
             + mType: `news` (string, optional) - 選單類別
-            + description: `null` (string, optional) - 說明備註
             + parentMenus (array[parentMenus])
         + menusEn
-            + mID: `55` (number, required) - 選單ID
-            + mName: `Press Releases` (string, optional) - 選單名稱
-            + mType: `news` (string, optional) - 選單類別
-            + description: `null` (string, optional) - 說明備註
+            + mID: `55`
+            + mName: `Press Releases`
+            + Type: `news`
             + parentMenus (array[parentMenus])
         + news (array[newsDataWithImg])
         + newsEn (array[newsDataWithImg])
@@ -258,25 +287,26 @@ HOST:aswebapi.test5.sinica.edu.tw/api
         + newsEnNum: 20 (number, required)
 
 ## 取得單篇新聞資料 [/getNewsData/{ID}]
+
 ### get NewsData [GET]
+
 #### ID為新聞ID
 
 + Parameters
     + ID: `1` (number, required) - 新聞ID
 
 + Response 200 (application/json)
+
     + Attributes
         + menus
             + mID: `55` (number, required) - 選單ID
             + mName: `新聞訊息` (string, optional) - 選單名稱
             + mType: `news` (string, optional) - 選單類別
-            + description: `null` (string, optional) - 說明備註
             + parentMenus (array[parentMenus])
         + menusEn
-            + mID: `55` (number, required) - 選單ID
-            + mName: `Press Releases` (string, optional) - 選單名稱
-            + mType: `news` (string, optional) - 選單類別
-            + description: `null` (string, optional) - 說明備註
+            + mID: `55`
+            + mName: `Press Releases`
+            + mType: `news`
             + parentMenus (array[parentMenus])
         + NewsDetailch (NewsDetails)
         + NewsDetailen (NewsDetails)
@@ -284,7 +314,10 @@ HOST:aswebapi.test5.sinica.edu.tw/api
 
 
 ## 網路相簿 [/getGalleries/{mID}]
+
 ### get Galleries [POST]
+
+
 #### mID為選單ID
 
 + Parameters
@@ -292,8 +325,8 @@ HOST:aswebapi.test5.sinica.edu.tw/api
     
 + Request (application/json)
     + Attributes
-        + startDate: `2022-01-01` (string, optional)
-        + endDate: `2022-01-03` (string, optional)
+        + startData: `2022-01-01` (string, optional)
+        + endData: `2022-01-03` (string, optional)
         + instCode: 21 (string, optional)
         + catID: 4 (string, optional)
         + keyword: 其他 (string, optional)
@@ -301,18 +334,17 @@ HOST:aswebapi.test5.sinica.edu.tw/api
         + pageNum: 10 (number, optional)
 
 + Response 200 (application/json)
+
     + Attributes
         + menus
             + mID: `61` (number, required) - 選單ID
             + mName: `網路相簿` (string, optional) - 選單名稱
             + mType: `album` (string, optional) - 選單類別
-            + description: `null` (string, optional) - 說明備註
             + parentMenus (array[parentMenus])
         + menusEn
             + mID: `61` (number, required) - 選單ID
             + mName: `Photos` (string, optional) - 選單名稱
             + mType: `album` (string, optional) - 選單類別
-            + description: `null` (string, optional) - 說明備註
             + parentMenus (array[parentMenus])
         + galleryCh (array[gallery])
         + galleryChNum: 20 (number, required)
@@ -322,6 +354,7 @@ HOST:aswebapi.test5.sinica.edu.tw/api
 
 ## 影音 [/getVideos/{mID}]
 ### get Videos [POST]
+
 #### mID為選單ID
 
 + Parameters
@@ -329,8 +362,8 @@ HOST:aswebapi.test5.sinica.edu.tw/api
     
 + Request (application/json)
     + Attributes
-        + startDate: `2022-01-01` (string, optional)
-        + endDate: `2022-01-03` (string, optional)
+        + startData: `2022-01-01` (string, optional)
+        + endData: `2022-01-03` (string, optional)
         + instCode: 21 (string, optional)
         + catID: 4 (string, optional)
         + keyword: 其他 (string, optional)
@@ -338,18 +371,17 @@ HOST:aswebapi.test5.sinica.edu.tw/api
         + pageNum: 10 (number, optional)
 
 + Response 200 (application/json)
+
     + Attributes
         + menus
             + mID: `62` (number, required) - 選單ID
             + mName: `影音` (string, optional) - 選單名稱
             + mType: `video` (string, optional) - 選單類別
-            + description: `null` (string, optional) - 說明備註
             + parentMenus (array[parentMenus])
         + menusEn
             + mID: `62` (number, required) - 選單ID
             + mName: `Videos` (string, optional) - 選單名稱
             + mType: `video` (string, optional) - 選單類別
-            + description: `null` (string, optional) - 說明備註
             + parentMenus (array[parentMenus])
         + VideosCh (array[Video])
         + VideoNumCh: 20 (number, required)
@@ -358,47 +390,47 @@ HOST:aswebapi.test5.sinica.edu.tw/api
 
 ## 連續空白版型 [/getParagraph/{mID}]
 ### get Paragraph [GET]
+
 #### mID為選單ID
 
 + Parameters
     + mID: `71` (number, required) - 選單ID
 
 + Response 200 (application/json)
+
     + Attributes
         + menus
             + mID: `71` (number, required) - 選單ID
             + mName: `檔管專區` (string, optional) - 選單名稱
             + mType: `paragraph` (string, optional) - 選單類別
-            + description: `null` (string, optional) - 說明備註
             + parentMenus (array[parentMenus])
         + menusEn
             + mID: `71` (number, required) - 選單ID
             + mName: `Archives` (string, optional) - 選單名稱
             + mType: `paragraph` (string, optional) - 選單類別
-            + description: `null` (string, optional) - 說明備註
             + parentMenus (array[parentMenus])
         + ParagraphCh (array[Paragraph])
         + ParagraphEn (array[Paragraph])
 
 ## 頁籤版型 [/getTabs/{mID}]
 ### get Tabs [GET]
+
 #### mID為選單ID
 + Parameters
     + mID: `69` (number, required) - 選單ID
 
 + Response 200 (application/json)
+
     + Attributes
         + menus
             + mID: `69` (number, required) - 選單ID
             + mName: `防疫專區` (string, optional) - 選單名稱
             + mType: `tab` (string, optional) - 選單類別
-            + description: `null` (string, optional) - 說明備註
             + parentMenus (array[parentMenus])
         + menusEn
             + mID: `69` (number, required) - 選單ID
             + mName: `Epidemic Prevention` (string, optional) - 選單名稱
             + mType: `tab` (string, optional) - 選單類別
-            + description: `null` (string, optional) - 說明備註
             + parentMenus (array[parentMenus])
         + TabsCh (array[Tab])
         + TabsEn (array[Tab])
@@ -406,23 +438,23 @@ HOST:aswebapi.test5.sinica.edu.tw/api
 
 ## 區塊版型 [/getSections/{mID}]
 ### get Sections [GET]
+
 #### mID為選單ID
 + Parameters
     + mID: `11` (number, required) - 選單ID
 
 + Response 200 (application/json)
+
     + Attributes
         + menus
             + mID: `11` (number, required) - 選單ID
             + mName: `公共設施` (string, optional) - 選單名稱
             + mType: `section` (string, optional) - 選單類別
-            + description: `null` (string, optional) - 說明備註
             + parentMenus (array[parentMenus])
         + menusEn
             + mID: `11` (number, required) - 選單ID
             + mName: `Public Facilities` (string, optional) - 選單名稱
             + mType: `section` (string, optional) - 選單類別
-            + description: `null` (string, optional) - 說明備註
             + parentMenus (array[parentMenus])
         + SectionsCh (array[Section])
         + SectionsEn (array[Section])
@@ -430,6 +462,7 @@ HOST:aswebapi.test5.sinica.edu.tw/api
 
 ## 多連結版型 [/getLinks/{mID}]
 ### get Multilinks [POST]
+
 #### mID為選單ID
 + Parameters
     + mID: `77` (number, required) - 選單ID
@@ -439,51 +472,53 @@ HOST:aswebapi.test5.sinica.edu.tw/api
         + keyword: 其他 (string, optional)
 
 + Response 200 (application/json)
+
     + Attributes
         + menus
             + mID: `77` (number, required) - 選單ID
             + mName: `相關連結` (string, optional) - 選單名稱
             + mType: `link` (string, optional) - 選單類別
-            + description: `null` (string, optional) - 說明備註
             + parentMenus (array[parentMenus])
         + menusEn
             + mID: `77` (number, required) - 選單ID
             + mName: `related link` (string, optional) - 選單名稱
             + mType: `link` (string, optional) - 選單類別
-            + description: `null` (string, optional) - 說明備註
             + parentMenus (array[parentMenus])
         + MultilinksCh (array[Multilink])
         + MultilinksEn (array[Multilink])
 
 ## 選單版型 [/getDirectory/{mID}]
 ### get Directory [GET]
+
 #### mID為選單ID
 + Parameters
     + mID: `3` (number, required) - 選單ID
 
 + Response 200 (application/json)
+
     + Attributes
         + menus
             + mID: `3` (number, required) - 選單ID
             + mName: `簡介` (string, optional) - 選單名稱
             + mType: `directory` (string, optional) - 選單類別
-            + description: `<p>說明備註</p>` (string, optional) - 說明備註
             + parentMenus (array[parentMenus])
         + menusEn
             + mID: `3` (number, required) - 選單ID
             + mName: `about Academia Sinica` (string, optional) - 選單名稱
             + mType: `directory` (string, optional) - 選單類別
-            + description: `<p>Notes</p>` (string, optional) - 說明備註
             + parentMenus (array[parentMenus])
         + DirectoryCh (array[Directory])
         + DirectoryEn (array[Directory])
 
 ## 人才招募列表 [/getRecruitmentlist/{mID}]
 ### get listRecruitment [POST]
+
 #### orderType 為排序之組別
-+ 刊登日期：1
-+ 截止日期：2
-+ 學經歷要求：3
++ 組別+單位+刊登日期：1
++ 用人部門：2
++ 職務名稱+單位：3
++ 刊登日期：4
++ 職務名稱+刊登日期：5
 
 #### orderKey 
 + asc
@@ -496,41 +531,31 @@ HOST:aswebapi.test5.sinica.edu.tw/api
 + 人文及社會科學組：4
 
 #### mID為選單ID
-
-#### workType為工作類型 + 職位
-
-#### workArea為工作地點
-
-#### expRequire為學經歷要求
 + Parameters
     + mID: `53` (number, required) - 選單ID
     
 + Request (application/json)
     + Attributes
         + division: `1` (number, optional)
-        + instCode: 01,02,03,04 (string, optional)
-        + workType: 1,2 (string, optional)
-        + expRequire: 1,2,3 (string, optional)
-        + workArea: 1,2 (string, optional)
+        + instCode: 21 (number, optional)
         + keyword: 其他 (string, optional)
         + startPage: 1 (number, optional)
         + pageNum: 5 (number, optional)
         + orderType: 1 (number, optional)
-        + orderKey: asc (string, optional)
+        + orderKey: 'asc' (string, optional)
         
 + Response 200 (application/json)
+
     + Attributes
         + menus
             + mID: `53` (number, required) - 選單ID
             + mName: `人才招募網` (string, optional) - 選單名稱
             + mType: `recruitment` (string, optional) - 選單類別
-            + description: `null` (string, optional) - 說明備註
             + parentMenus (array[parentMenus])
         + menusEn
             + mID: `53` (number, required) - 選單ID
             + mName: `Recruitment` (string, optional) - 選單名稱
             + mType: `recruitment` (string, optional) - 選單類別
-            + description: `null` (string, optional) - 說明備註
             + parentMenus (array[parentMenus])
         + listRecruitmentCh (array[Recruitment])
         + RecruitmentChNum: 20 (number, required)
@@ -548,26 +573,28 @@ HOST:aswebapi.test5.sinica.edu.tw/api
     + ID: `1` (number, required) - 人才招募ID
 
 + Response 200 (application/json)
+
     + Attributes
         + menus
             + mID: `53` (number, required) - 選單ID
             + mName: `人才招募網` (string, optional) - 選單名稱
             + mType: `recruitment` (string, optional) - 選單類別
-            + description: `null` (string, optional) - 說明備註
             + parentMenus (array[parentMenus])
         + menusEn
             + mID: `53` (number, required) - 選單ID
             + mName: `Recruitment` (string, optional) - 選單名稱
             + mType: `recruitment` (string, optional) - 選單類別
-            + description: `null` (string, optional) - 說明備註
             + parentMenus (array[parentMenus])
         + RecruitmentDetailch (RecruitmentDetails)
         + RecruitmentDetailen (RecruitmentDetails)
 
 
 ## 取得行事曆資料 - 行事曆 [/getListCanlendarData/{mID}]
+
 ### get List CalendarData [POST]
+
 #### mID為選單ID
+
 #### division 為學組組別
 + 院本部：1
 + 數理科學組：2
@@ -579,8 +606,8 @@ HOST:aswebapi.test5.sinica.edu.tw/api
 
 + Request (application/json)
     + Attributes
-        + startDate: `2022-01-01` (string, optional)
-        + endDate: `2022-01-03` (string, optional)
+        + startData: `2022-01-01` (string, optional)
+        + endData: `2022-01-03` (string, optional)
         + instCode: 21 (string, optional)
         + division: 1 (string, optional)
         + eventCID: 1 (string, optional)
@@ -592,21 +619,22 @@ HOST:aswebapi.test5.sinica.edu.tw/api
             + mID: `57` (number, required) - 選單ID
             + mName: `近期活動` (string, optional) - 選單名稱
             + mType: `event` (string, optional) - 選單類別
-            + description: `null` (string, optional) - 說明備註
             + parentMenus (array[parentMenus])
         + menusEn
             + mID: `57` (number, required) - 選單ID
             + mName: `Events` (string, optional) - 選單名稱
             + mType: `event` (string, optional) - 選單類別
-            + description: `null` (string, optional) - 說明備註
             + parentMenus (array[parentMenus])
         + CanlendarDataCh (array[Canlendar])
         + CanlendarDataEn (array[Canlendar])
 
 
 ## 取得行事曆資料 - 時間軸 [/getTimelineData/{mID}]
+
 ### get TimelineData [POST]
+
 #### mID為選單ID
+
 #### division 為學組組別
 + 院本部：1
 + 數理科學組：2
@@ -618,8 +646,8 @@ HOST:aswebapi.test5.sinica.edu.tw/api
     
 + Request (application/json)
     + Attributes
-        + startDate: `2022-01-01` (string, optional)
-        + endDate: `2022-01-03` (string, optional)
+        + startData: `2022-01-01` (string, optional)
+        + endData: `2022-01-03` (string, optional)
         + instCode: 21 (string, optional)
         + division: 1 (string, optional)
         + eventCID: 1 (string, optional)
@@ -631,21 +659,22 @@ HOST:aswebapi.test5.sinica.edu.tw/api
             + mID: `57` (number, required) - 選單ID
             + mName: `近期活動` (string, optional) - 選單名稱
             + mType: `event` (string, optional) - 選單類別
-            + description: `null` (string, optional) - 說明備註
             + parentMenus (array[parentMenus])
         + menusEn
             + mID: `57` (number, required) - 選單ID
             + mName: `Events` (string, optional) - 選單名稱
             + mType: `event` (string, optional) - 選單類別
-            + description: `null` (string, optional) - 說明備註
             + parentMenus (array[parentMenus])
         + TimelineDataCh (array[Timeline])
         + TimelineDataEn (array[Timeline])
 
 
 ## 取得單篇行事曆資料 [/getEventinfoData/{ID}]
+
 ### get Calendar Event info [GET]
+
 #### mID為選單ID
+
 #### division 為學組組別
 + 院本部：1
 + 數理科學組：2
@@ -661,19 +690,19 @@ HOST:aswebapi.test5.sinica.edu.tw/api
             + mID: `57` (number, required) - 選單ID
             + mName: `近期活動` (string, optional) - 選單名稱
             + mType: `event` (string, optional) - 選單類別
-            + description: `null` (string, optional) - 說明備註
             + parentMenus (array[parentMenus])
         + menusEn
             + mID: `57` (number, required) - 選單ID
             + mName: `Events` (string, optional) - 選單名稱
             + mType: `event` (string, optional) - 選單類別
-            + description: `null` (string, optional) - 說明備註
             + parentMenus (array[parentMenus])
         + EventinfoDataCh (Eventinfo)
         + EventinfoDataEn (Eventinfo)
 
 ## 取得空白版型資料 [/getPage/{mID}]
+
 ### get PageData [GET]
+
 #### mID為選單ID
 + Parameters
     + mID: `10` (number, required) - 選單ID
@@ -684,20 +713,21 @@ HOST:aswebapi.test5.sinica.edu.tw/api
             + mID: `10` (number, required) - 選單ID
             + mName: `交通資訊` (string, optional) - 選單名稱
             + mType: `page` (string, optional) - 選單類別
-            + description: `null` (string, optional) - 說明備註
             + parentMenus (array[parentMenus])
         + menusEn
             + mID: `10` (number, required) - 選單ID
             + mName: `Location and Transportation` (string, optional) - 選單名稱
             + mType: `page` (string, optional) - 選單類別
-            + description: `null` (string, optional) - 說明備註
             + parentMenus (array[parentMenus])
         + pageCh (Page)
         + pageEn (Page)
 
 ## 研究人員列表頁 [/Researcherlist/{mID}]
+
 ### get Researcherlist [POST]
+
 #### mID為選單ID
+
 #### division 為學組組別
 + 院本部：1
 + 數理科學組：2
@@ -721,13 +751,11 @@ HOST:aswebapi.test5.sinica.edu.tw/api
             + mID: `129` (number, required) - 選單Id
             + mName: `研究人員` (string, optional) - 選單名稱
             + mType: `researcher` (string, optional) - 版型類別
-            + description: `null` (string, optional) - 說明備註
             + parentMenus (array[parentMenus])
         + menusEn
             + mID: `129` (number, required) - 選單Id
             + mName: `Researcher` (string, optional) - 選單名稱
             + mType: `researcher` (string, optional) - 版型類別
-            + description: `null` (string, optional) - 說明備註
             + parentMenus (array[parentMenus])
         + ResearcherCh (array[ResearcherData])
         + ResearcherChNum: 5 (number, required)
@@ -735,7 +763,9 @@ HOST:aswebapi.test5.sinica.edu.tw/api
         + ResearcherEnNum: 5 (number, required)
 
 ## 取得研究人員資料 [/getResearcherData/{researcherID}]
+
 ### get ResearcherData [GET]
+
 #### ID為研究人員ID
 + Parameters
     + researcherID: `1` (number, required) - researcherID
@@ -746,19 +776,19 @@ HOST:aswebapi.test5.sinica.edu.tw/api
             + mID: `129` (number, required) - 選單Id
             + mName: `研究人員` (string, optional) - 選單名稱
             + mType: `researcher` (string, optional) - 版型類別
-            + description: `null` (string, optional) - 說明備註
             + parentMenus (array[parentMenus])
         + menusEn
             + mID: `129` (number, required) - 選單Id
             + mName: `Researcher` (string, optional) - 選單名稱
             + mType: `researcher` (string, optional) - 版型類別
-            + description: `null` (string, optional) - 說明備註
             + parentMenus (array[parentMenus])
         + ResearcherDetailCh (ResearcherDetail)
         + ResearcherDetailEn (ResearcherDetail)
 
 ## 取得行事曆訂閱資料 [/getGoogleCalendarData]
+
 ### get GoogleCalendarData [POST]
+
 #### division 為學組組別
 + 院本部：1
 + 數理科學組：2
@@ -781,6 +811,7 @@ HOST:aswebapi.test5.sinica.edu.tw/api
     + Attributes
         + keywordCh (keyword)
         + keywordEn (keyword)
+
 
 ## 取得近 5 個月新聞公告數量 [/newsNumforBI]
 ### get newsNumforBI [GET]
@@ -824,47 +855,6 @@ HOST:aswebapi.test5.sinica.edu.tw/api
         + ID: `null` (string) - 新聞ID
         + title: `中央研究院-首頁` (string) - 網站標題
         + value: `212229` (number) - 瀏覽數量
-
-## 取得工作地點 [/getWorkAreaData]
-### get WorkAreaData [GET]
-
-+ Response 200 (application/json)
-    + Attributes
-        + Data (array[WorkAreaData])
-        + DataEn (array[WorkAreaData])
-
-## 取得學經歷 [/getExpRequireData]
-### get ExpRequireData [GET]
-
-+ Response 200 (application/json)
-    + Attributes
-        + Data (array[ExpRequireData])
-        + DataEn (array[ExpRequireData])
-
-
-## 取得工作類別 [/getWorkTypeCatData]
-### get WorkTypeCatData [GET]
-
-+ Response 200 (application/json)
-    + Attributes
-        + Data (array[WorkTypeCatData])
-        + DataEn (array[WorkTypeCatData])
-
-## 取得職位 [/getWorkTypeData]
-### get WorkTypeData [GET]
-
-+ Response 200 (application/json)
-    + Attributes
-        + Data (array[WorkTypeData])
-        + DataEn (array[WorkTypeData])
-
-## 取得職缺關鍵字 [/getJobOpeningKeywordData]
-### get JobOpeningKeywordData [GET]
-
-+ Response 200 (application/json)
-    + Attributes
-        + Data (array[JobOpeningKeyword])
-        + DataEn (array[JobOpeningKeyword])
 
 # Data Structures
 ## HomeMenu
@@ -1302,26 +1292,4 @@ HOST:aswebapi.test5.sinica.edu.tw/api
 
 ## keyword
 + keyword: `院區開放` (string, required) - 關鍵字
-+ serial: `0` ` (number, required) - 排序
-
-## WorkAreaData
-+ areaName: `南港院區` (string, required) - 工作地點
-+ serial: `0` ` (number, required) - 排序
-
-## ExpRequireData
-+ expName: `博士` (string, required) - 學經歷名稱
-+ serial: `0` ` (number, required) - 排序
-
-## WorkTypeData
-+ typeName: `研究人員及研究技術人員` (string, required) - 職位名稱
-+ catID: `1` (number, required) - 工作類別代碼
-+ serial: `0` ` (number, required) - 排序
-
-## WorkTypeCatData
-+ catID: `1` (number, required) - 工作類別代碼
-+ catName: `研究類` (string, required) - 工作類別
-+ serial: `0` ` (number, required) - 排序
-
-## JobOpeningKeyword
-+ keyword: `博士` (string, required) - 關鍵字
 + serial: `0` ` (number, required) - 排序
