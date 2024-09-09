@@ -1,4 +1,12 @@
 ### 院網 api 文件
+## v1.1.3
+### 新增參數 組別
+#### 異動
++ 新聞列表頁-table [/getNewlist/{mID}]
++ 新聞列表頁-cards [/getNewlistWithimg/{mID}]
++ 網路相簿 [/getGalleries/{mID}]
++ 影音 [/getVideos/{mID}]
+
 ## v1.1.2
 ### 新增參數 說明備註
 description - 說明備註  
