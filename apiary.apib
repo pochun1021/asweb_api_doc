@@ -581,11 +581,15 @@ HOST:aswebapi.test5.sinica.edu.tw/api
 + 人文及社會科學組：4
 + 跨學組研究中心: 5
 
+#### NowYearMonth 為查詢時間範圍
+> 查詢範圍為一個月，預設查詢當前月份  
+
 + Parameters
     + mID: `57` (number, required) - 選單ID
 
 + Request (application/json)
     + Attributes
+        + NowYearMonth: `2022-01-01` (string, optional)
         + startDate: `2022-01-01` (string, optional)
         + endDate: `2022-01-03` (string, optional)
         + instCode: 21 (string, optional)
@@ -621,11 +625,17 @@ HOST:aswebapi.test5.sinica.edu.tw/api
 + 人文及社會科學組：4
 + 跨學組研究中心: 5
 
+#### NowYearMonth 為查詢時間範圍
++ 查詢範圍為一個月或是一天，預設查詢當前月份  
++ 如果值為 `2022-01-01` 會查詢該日當天所有活動  
++ 如果值為 `2022-01` 會查詢該月份所有活動  
+
 + Parameters
     + mID: `57` (number, required) - mID 選單
     
 + Request (application/json)
     + Attributes
+        + NowYearMonth: `2022-01-01` (string, optional)
         + startDate: `2022-01-01` (string, optional)
         + endDate: `2022-01-03` (string, optional)
         + instCode: 21 (string, optional)
@@ -1106,7 +1116,7 @@ HOST:aswebapi.test5.sinica.edu.tw/api
 + Institutes (array[Institutes])
 
 ## Institutes
-+ InstCode: `01` (string, required) - catID
++ InstCode: `01` (string, required) - 單位代碼
 + InstName: `院本部` (string, required) - 單位名稱
 + serial: `1` (number, required) - 排序
 
