@@ -661,6 +661,45 @@ HOST:aswebapi.test5.sinica.edu.tw/api
         + TimelineDataEn (array[Timeline])
 
 
+## 取得行事曆資料 - 搜尋活動 [/getQueryEventData/{mID}]
+### get QueryEventData [POST]
+#### mID為選單ID
+#### division 為學組組別
++ 院本部：1
++ 數理科學組：2
++ 生命科學組：3
++ 人文及社會科學組：4
++ 跨學組研究中心: 5
+
+
++ Parameters
+    + mID: `57` (number, required) - mID 選單
+    
++ Request (application/json)
+    + Attributes
+        + instCode: 21 (string, optional)
+        + division: 1 (string, optional)
+        + eventCID: 1 (string, optional)
+        + keyword: 其他 (string, optional)
+
++ Response 200 (application/json)
+    + Attributes
+        + menus
+            + mID: `57` (number, required) - 選單ID
+            + mName: `近期活動` (string, optional) - 選單名稱
+            + mType: `event` (string, optional) - 選單類別
+            + description: `null` (string, optional) - 說明備註
+            + parentMenus (array[parentMenus])
+        + menusEn
+            + mID: `57` (number, required) - 選單ID
+            + mName: `Events` (string, optional) - 選單名稱
+            + mType: `event` (string, optional) - 選單類別
+            + description: `null` (string, optional) - 說明備註
+            + parentMenus (array[parentMenus])
+        + QueryEventDataCh (array[Timeline])
+        + QueryEventDataEn (array[Timeline])
+
+
 ## 取得單篇行事曆資料 [/getEventinfoData/{ID}]
 ### get Calendar Event info [GET]
 #### mID為選單ID
