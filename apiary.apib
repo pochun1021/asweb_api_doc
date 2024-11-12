@@ -926,6 +926,16 @@ HOST:aswebapi.test5.sinica.edu.tw/api
         + Data (array[JobOpeningKeyword])
         + DataEn (array[JobOpeningKeyword])
 
+## 訂閱中研院訊 [/subscribeNewsLetter]
+### post subscribeNewsLetter [POST]
++ Request (application/json)
+    + Attributes
+        + email: `aaa@as.edu.tw` (string, required)
+        
++ Response 200 (application/json)
+    + Attributes 
+        + message: `訂閱成功` (string)
+
 # Data Structures
 ## HomeMenu
 + mID: 2 (number, required) - 選單Id
@@ -1283,7 +1293,6 @@ HOST:aswebapi.test5.sinica.edu.tw/api
 + startTime: `2023-03-05` (string, required) - 開始時間
 + startDateTime: `2023-03-05 14:24:03` (string, required)
 + endDateTime: `2023-03-15 14:24:03` (string, required)
-+ isPopScience: `1` (number, required)
 
 ## dates
 + `date`: 2023-03-05 (string, required)
@@ -1303,7 +1312,6 @@ HOST:aswebapi.test5.sinica.edu.tw/api
 + location: `255 VonRueden StreetNorth Taylor, AZ 66444-0245` (string, required)
 + linkUrl: `https://www.sinica.edu.tw/ch` (string, required)
 + speakerName: `Raquel Kessler` (string, required)
-+ isPopScience: `1` (number, required)
 + img (img)
 
 ## Eventinfo
