@@ -1,4 +1,9 @@
 ### 院網 api 文件
+## v1.1.7
+### 新增訂閱中研院訊語言
+#### 異動
++ 訂閱中研院訊加入語言分類。
+
 ## v1.1.6
 ### 新增函式 訂閱中研院訊 [/subscribeNewsLetter]
 #### 異動
@@ -31,7 +36,7 @@ description - 說明備註
 + 取得單篇新聞資料 [/getNewsData/{ID}]
 + 網路相簿 [/getGalleries/{mID}]
 + 影音 [/getVideos/{mID}]
-+ 連續空白版型 [/getParagraph/{mID}]
++ 連續空7白版型 [/getParagraph/{mID}]
 + 頁籤版型 [/getTabs/{mID}]
 + 區塊版型 [/getSections/{mID}]
 + 多連結版型 [/getLinks/{mID}]
