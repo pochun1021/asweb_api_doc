@@ -1226,6 +1226,18 @@ HOST:aswebapi.test5.sinica.edu.tw/api
 + serial: `1` (number, required) - 排序
 + target: `_self` (string, optional) - 連結動作
 + mType: `page` (string, required) - 版型類別
++ directorys (array[SubDirectory])
+
+## SubDirectory
++ mID: 5 (number, required) - 選單Id
++ mName: `簡史說明-1` (string, required) - 選單名稱
++ linkOut: 0 (enum, required)
+    + 0 - 沒有外連
+    + 1 - 外部連結
++ linkUrl: null (string, optional) - 外連連結
++ serial: `1` (number, required) - 排序
++ target: `_blank` (string, optional) - 連結動作
++ mType: `page` (string, required) - 版型類別
 
 ## Recruitment
 + rID: 1 (number, required) - 人才招募ID
